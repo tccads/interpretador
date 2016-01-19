@@ -1,0 +1,275 @@
+<?import com.interpretador.gui.GameOverPanel?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<?import javafx.scene.shape.*?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+
+<Pane fx:controller="com.interpretador.gui.GuiRenderController"
+      xmlns:fx="http://javafx.com/fxml">
+    <GridPane fx:id="notePanel" vgap="1" hgap="1"/>
+    <BorderPane styleClass="gameBoard" fx:id="gameBoard">
+        <center>
+            <GridPane fx:id="musicSheetPanel" hgap="1" vgap="1" layoutY="30" layoutX="40"/>
+        </center>
+    </BorderPane>
+<!--
+      <BorderPane id="paneBraco" layoutX="47.0" layoutY="206.0" prefHeight="156.0" prefWidth="553.0" BorderPane.alignment="TOP_CENTER" >
+         <children>
+            <Rectangle id="casa12" arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="508.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#836e42" />
+                        <Stop color="#7c6642" offset="0.17419125488801973" />
+                        <Stop color="#6f5c3b" offset="0.3285934352411423" />
+                        <Stop color="#755c2d" offset="0.5017182130584192" />
+                        <Stop color="#8d681d" offset="0.6928941027767903" />
+                        <Stop color="#755923" offset="0.8623849587233872" />
+                        <Stop color="#5b3d11" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle id="casa11" arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="463.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#836e42" />
+                        <Stop color="#7c6642" offset="0.17419125488801973" />
+                        <Stop color="#6f5c3b" offset="0.3285934352411423" />
+                        <Stop color="#755c2d" offset="0.5017182130584192" />
+                        <Stop color="#8d681d" offset="0.6928941027767903" />
+                        <Stop color="#755923" offset="0.8623849587233872" />
+                        <Stop color="#5b3d11" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle id="casa10" arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="418.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#836e42" />
+                        <Stop color="#7c6642" offset="0.17419125488801973" />
+                        <Stop color="#6f5c3b" offset="0.3285934352411423" />
+                        <Stop color="#755c2d" offset="0.5017182130584192" />
+                        <Stop color="#8d681d" offset="0.6928941027767903" />
+                        <Stop color="#755923" offset="0.8623849587233872" />
+                        <Stop color="#5b3d11" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle id="casa9" arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="373.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#836e42" />
+                        <Stop color="#7c6642" offset="0.17419125488801973" />
+                        <Stop color="#6f5c3b" offset="0.3285934352411423" />
+                        <Stop color="#755c2d" offset="0.5017182130584192" />
+                        <Stop color="#8d681d" offset="0.6928941027767903" />
+                        <Stop color="#755923" offset="0.8623849587233872" />
+                        <Stop color="#5b3d11" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle id="casa8" arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="328.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#836e42" />
+                        <Stop color="#7c6642" offset="0.17419125488801973" />
+                        <Stop color="#6f5c3b" offset="0.3285934352411423" />
+                        <Stop color="#755c2d" offset="0.5017182130584192" />
+                        <Stop color="#8d681d" offset="0.6928941027767903" />
+                        <Stop color="#755923" offset="0.8623849587233872" />
+                        <Stop color="#5b3d11" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle id="casa7" arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="283.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#836e42" />
+                        <Stop color="#7c6642" offset="0.17419125488801973" />
+                        <Stop color="#6f5c3b" offset="0.3285934352411423" />
+                        <Stop color="#755c2d" offset="0.5017182130584192" />
+                        <Stop color="#8d681d" offset="0.6928941027767903" />
+                        <Stop color="#755923" offset="0.8623849587233872" />
+                        <Stop color="#5b3d11" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle id="casa6" arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="238.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#836e42" />
+                        <Stop color="#7c6642" offset="0.17419125488801973" />
+                        <Stop color="#6f5c3b" offset="0.3285934352411423" />
+                        <Stop color="#755c2d" offset="0.5017182130584192" />
+                        <Stop color="#8d681d" offset="0.6928941027767903" />
+                        <Stop color="#755923" offset="0.8623849587233872" />
+                        <Stop color="#5b3d11" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle id="casa5" arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="193.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#836e42" />
+                        <Stop color="#7c6642" offset="0.17419125488801973" />
+                        <Stop color="#6f5c3b" offset="0.3285934352411423" />
+                        <Stop color="#755c2d" offset="0.5017182130584192" />
+                        <Stop color="#8d681d" offset="0.6928941027767903" />
+                        <Stop color="#755923" offset="0.8623849587233872" />
+                        <Stop color="#5b3d11" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle id="casa4" arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="148.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#836e42" />
+                        <Stop color="#7c6642" offset="0.17419125488801973" />
+                        <Stop color="#6f5c3b" offset="0.3285934352411423" />
+                        <Stop color="#755c2d" offset="0.5017182130584192" />
+                        <Stop color="#8d681d" offset="0.6928941027767903" />
+                        <Stop color="#755923" offset="0.8623849587233872" />
+                        <Stop color="#5b3d11" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle id="casa3" arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="103.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#836e42" />
+                        <Stop color="#7c6642" offset="0.17419125488801973" />
+                        <Stop color="#6f5c3b" offset="0.3285934352411423" />
+                        <Stop color="#755c2d" offset="0.5017182130584192" />
+                        <Stop color="#8d681d" offset="0.6928941027767903" />
+                        <Stop color="#755923" offset="0.8623849587233872" />
+                        <Stop color="#5b3d11" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle id="casa2" arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="58.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#836e42" />
+                        <Stop color="#7c6642" offset="0.17419125488801973" />
+                        <Stop color="#6f5c3b" offset="0.3285934352411423" />
+                        <Stop color="#755c2d" offset="0.5017182130584192" />
+                        <Stop color="#8d681d" offset="0.6928941027767903" />
+                        <Stop color="#755923" offset="0.8623849587233872" />
+                        <Stop color="#5b3d11" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle id="casa1" arcHeight="5.0" arcWidth="5.0" height="156.0" layoutX="13.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#836e42" />
+                        <Stop color="#7c6642" offset="0.17419125488801973" />
+                        <Stop color="#6f5c3b" offset="0.3285934352411423" />
+                        <Stop color="#755c2d" offset="0.5017182130584192" />
+                        <Stop color="#8d681d" offset="0.6928941027767903" />
+                        <Stop color="#755923" offset="0.8623849587233872" />
+                        <Stop color="#5b3d11" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle id="pestana" arcHeight="5.0" arcWidth="5.0" height="156.0" stroke="BLACK" strokeType="INSIDE" width="14.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#fcfcfc" />
+                        <Stop color="#c9c8c6" offset="0.17419125488801968" />
+                        <Stop color="#d7d7d7" offset="0.3285934352411423" />
+                        <Stop color="#aeadab" offset="0.5017182130584192" />
+                        <Stop color="#e1dfdb" offset="0.6928941027767903" />
+                        <Stop color="#f5f3ef" offset="0.8623849587233869" />
+                        <Stop color="#fcfcfc" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Line id="mizinha" endX="552.0" layoutY="15.0" stroke="GREY" strokeWidth="0.9" />
+            <Line id="si" endX="552.0" layoutY="40.0" stroke="PURPLE" strokeWidth="1.2" />
+            <Line id="sol" endX="552.0" layoutY="65.0" stroke="GREEN" strokeWidth="1.5" />
+            <Line id="re" endX="552.0" layoutY="90.0" strokeWidth="2.0" />
+            <Line id="la" endX="552.0" layoutY="115.0" stroke="RED" strokeWidth="2.5" />
+            <Line id="mizona" endX="552.0" layoutY="140.0" stroke="GOLDENROD" strokeWidth="3.0" />
+         </children>
+      </BorderPane>
+-->
+    <VBox layoutX="243" layoutY="20" alignment="CENTER" styleClass="vbox">
+        <VBox alignment="CENTER">
+            <Label text="Score:" styleClass="scoreClass"/>
+            <Text text="Text" fx:id="scoreValue" styleClass="scoreClass"/>
+        </VBox>
+        <VBox alignment="CENTER">
+            <Label text="Next brick" styleClass="nextBrickLabel"/>
+            <BorderPane styleClass="nextBrick" prefWidth="100" prefHeight="70" maxWidth="100">
+                <center>
+                    <GridPane fx:id="nextNote" alignment="CENTER" hgap="1" vgap="1"/>
+                </center>
+            </BorderPane>
+        </VBox>
+        <Button text="New Game" onAction="#newGame" styleClass="ipad-dark-grey" prefWidth="140"/>
+        <ToggleButton text="Pause" styleClass="ipad-dark-grey" onAction="#pauseGame" prefWidth="140"
+                      fx:id="pauseButton"/>
+        <VBox fx:id="helpBox">
+
+            <Text styleClass="helpInfo" wrappingWidth="150">
+                <![CDATA[
+                Use arrow keys (←, ↑, →, ↓) or (A,S,D,W) keys for movement and rotating.
+                ]]>
+            </Text>
+            <Text styleClass="helpInfo" wrappingWidth="150">
+                <![CDATA[
+                N - start new game.
+                ]]>
+            </Text>
+            <Text styleClass="helpInfo" wrappingWidth="150">
+                <![CDATA[
+                P - pause/resume.
+                ]]>
+            </Text>
+
+        </VBox>
+    </VBox>
+    <Group fx:id="groupNotification" layoutX="14" layoutY="203">
+        <VBox alignment="CENTER">
+            <GameOverPanel fx:id="gameOverPanel"/>
+        </VBox>
+    </Group>
+    <stylesheets>
+        <URL value="@window_style.css"/>
+    </stylesheets>
+        
+</Pane>

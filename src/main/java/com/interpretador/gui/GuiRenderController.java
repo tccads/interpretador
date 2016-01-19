@@ -31,14 +31,17 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.ThreadLocalRandom;
 import javafx.application.ConditionalFeature;
 import javafx.scene.control.Label;
+import javafx.scene.shape.StrokeLineJoin;
 
 public class GuiRenderController implements Initializable {
 
-    private static final int BRICK_NOTE_WIDTH = 20;
+    private static final int BRICK_NOTE_BG_SIZE = 20;
+    
     private static int brickNoteHeight = 50;
     
     @FXML
@@ -75,6 +78,8 @@ public class GuiRenderController implements Initializable {
 
     private final BooleanProperty isGameOver = new SimpleBooleanProperty();
 
+    
+    //Método que inicializa o jogo
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Font.loadFont(getClass().getClassLoader().getResource("digital.ttf").toExternalForm(), 38);
@@ -83,7 +88,7 @@ public class GuiRenderController implements Initializable {
         musicSheetPanel.setOnKeyPressed(new EventHandler<KeyEvent>() {
             
             /** Inserir aqui os eventos do usuário quanto ao acerto das notas ou não.
-             * 
+             * Esse método fica "ouvindo" tudo o que acontece nas entradas
              * @param keyEvent 
              */
             @Override
@@ -101,6 +106,35 @@ public class GuiRenderController implements Initializable {
 //                        refreshBrick(eventListener.onRotateEvent(new MoveEvent(EventType.ROTATE, EventSource.USER)));
 //                        keyEvent.consume();
 //                    }
+                    
+                    if (keyEvent.getCode() == KeyCode.A) {
+                        System.out.println("Apertando A");
+                        keyEvent.consume();
+                    }
+                    if (keyEvent.getCode() == KeyCode.S) {
+                        System.out.println("Apertando S");
+                        keyEvent.consume();
+                    }
+                    if (keyEvent.getCode() == KeyCode.D) {
+                        System.out.println("Apertando D");
+                        keyEvent.consume();
+                    }
+                    
+                    if (keyEvent.getCode() == KeyCode.F) {
+                        System.out.println("Apertando F");
+                        keyEvent.consume();
+                    }
+                    
+                    if (keyEvent.getCode() == KeyCode.G) {
+                        System.out.println("Apertando G");
+                        keyEvent.consume();
+                    }
+                    
+                    if (keyEvent.getCode() == KeyCode.H) {
+                        System.out.println("Apertando H");
+                        keyEvent.consume();
+                    }
+                    
                     if (keyEvent.getCode() == KeyCode.DOWN || keyEvent.getCode() == KeyCode.S) {
                         moveDown(new MoveEvent(EventType.DOWN, EventSource.USER));
                         keyEvent.consume();
@@ -136,43 +170,59 @@ public class GuiRenderController implements Initializable {
         scoreValue.setEffect(reflection);
     }
 
-    /** Método que inicializa a visão da tela na pauta
+    /** Método que inicializa a visão da tela na pauta. Cuida da Construção da tela.
      * 
      */
     public void initSheetView(int[][] boardMatrix, ViewData note) {
         
+        Random gerador = new Random();
         Label noteName = new Label("5");
-        brickNoteHeight = ThreadLocalRandom.current().nextInt();
+        brickNoteHeight = gerador.nextInt(101);
         
         //Tamanhos da tela:
-        int xSize = boardMatrix.length;
-        int ySize = boardMatrix[0].length;
+        int columnsSize = boardMatrix.length;
+        int linesSize = boardMatrix[0].length;
         
         //Inicia a tela com os seus tamanhos
-        displayMatrix = new Rectangle[xSize][ySize];
-        for (int i = 2; i < xSize; i++){
+        displayMatrix = new Rectangle[columnsSize][linesSize];
+        
+        //Percorre a matriz da Sheet de 2, até a última unidade horizontal(Percorre as colunas da matriz).
+        for (int i = 2; i < columnsSize; i++){
+            //Para cada coluna i, percorre verticalmente a matriz(Vai descendo, linha por linha).
             for (int j = 0; j < boardMatrix[i].length; j++) {
-                Rectangle rectangle = new Rectangle(BRICK_NOTE_WIDTH, BRICK_NOTE_WIDTH);
+                Rectangle rectangle = new Rectangle(BRICK_NOTE_BG_SIZE, BRICK_NOTE_BG_SIZE);
                 rectangle.setFill(Color.TRANSPARENT);
-                rectangle.setArcHeight(2);
-                rectangle.setArcWidth(2);
-                displayMatrix[i][j] = rectangle;
+                displayMatrix[i][j] = rectangle;         
                 musicSheetPanel.add(rectangle, j, i - 2);
             }
         }
 
-        rectangles = new Rectangle[note.getNoteData().length][note.getNoteData()[0].length];
-        for (int i = 0; i < note.getNoteData().length; i++) {
+        int xNoteSize = note.getNoteData().length;
+        int yNoteSize = note.getNoteData()[0].length;
+        
+        //rectangles = new Rectangle[note.getNoteData().length][note.getNoteData()[0].length];
+        rectangles = new Rectangle[xNoteSize][yNoteSize];
+        
+        //percorre todas as colunas da nota, se estiver certo, deve percorrer esse loop apenas uma vez.
+        for (int i = 0; i < yNoteSize; i++) {
+            
+            System.out.println("Tamanho horizonltal da nota: "+ yNoteSize);
             for (int j = 0; j < note.getNoteData()[i].length; j++) {
-                Rectangle rectangle = new Rectangle(BRICK_NOTE_WIDTH, brickNoteHeight);
+                Rectangle rectangle = new Rectangle(BRICK_NOTE_BG_SIZE, brickNoteHeight);
+                System.out.println("Tamanho Vertical da nota: "+ xNoteSize);
+//                rectangle.setArcHeight(8);
+//                rectangle.setArcWidth(8);
+                //Pinta a cor da nota: Deve ser coerente de acordo com qual corda a nota pertence.
                 rectangle.setFill(getFillColor(note.getNoteData()[i][j]));
                 rectangles[i][j] = rectangle;
+                
                 //Enfiar o número do traste aqui
                 notePanel.add(rectangle, j, i);
             }
         }
-        notePanel.setLayoutX(musicSheetPanel.getLayoutX() + note.getxPosition() * notePanel.getVgap() + note.getxPosition() * BRICK_NOTE_WIDTH);
-        notePanel.setLayoutY(-42 + musicSheetPanel.getLayoutY() + note.getyPosition() * notePanel.getHgap() + note.getyPosition() * BRICK_NOTE_WIDTH);
+        
+        notePanel.setLayoutX(musicSheetPanel.getLayoutX() + note.getxPosition() * notePanel.getVgap() + note.getxPosition() * BRICK_NOTE_BG_SIZE);
+        notePanel.setLayoutY(-42 + musicSheetPanel.getLayoutY() + note.getyPosition() * notePanel.getHgap() + note.getyPosition() * BRICK_NOTE_BG_SIZE);
 
         generatePreviewPanel(note.getNextNoteData());
 
@@ -233,13 +283,13 @@ public class GuiRenderController implements Initializable {
         return returnPaint;
     }
 
-    private void generatePreviewPanel(int[][] nextBrickData) {
+    private void generatePreviewPanel(int[][] nextNoteBrickData) {
         nextNote.getChildren().clear();
-        for (int i = 0; i < nextBrickData.length; i++) {
-            for (int j = 0; j < nextBrickData[i].length; j++) {
-                Rectangle rectangle = new Rectangle(BRICK_NOTE_WIDTH, BRICK_NOTE_WIDTH);
-                setRectangleData(nextBrickData[i][j], rectangle);
-                if (nextBrickData[i][j] != 0) {
+        for (int i = 0; i < nextNoteBrickData.length; i++) {
+            for (int j = 0; j < nextNoteBrickData[i].length; j++) {
+                Rectangle rectangle = new Rectangle(BRICK_NOTE_BG_SIZE, BRICK_NOTE_BG_SIZE);
+                setRectangleData(nextNoteBrickData[i][j], rectangle);
+                if (nextNoteBrickData[i][j] != 0) {
                     nextNote.add(rectangle, j, i);
                 }
             }
@@ -247,10 +297,17 @@ public class GuiRenderController implements Initializable {
     }
 
     private void refreshNote(ViewData note) {
+        
+        int columns = note.getNoteData().length;
+        int rows = note.getNoteData()[0].length;
+        
         if (isPause.getValue() == Boolean.FALSE) {
-            notePanel.setLayoutX(musicSheetPanel.getLayoutX() + note.getxPosition() * notePanel.getVgap() + note.getxPosition() * BRICK_NOTE_WIDTH);
-            notePanel.setLayoutY(-42 + musicSheetPanel.getLayoutY() + note.getyPosition() * notePanel.getHgap() + note.getyPosition() * BRICK_NOTE_WIDTH);
-            for (int i = 0; i < note.getNoteData().length; i++) {
+            notePanel.setLayoutX(musicSheetPanel.getLayoutX() + note.getxPosition() * notePanel.getVgap() + note.getxPosition() * BRICK_NOTE_BG_SIZE);
+            notePanel.setLayoutY(-42 + musicSheetPanel.getLayoutY() + note.getyPosition() * notePanel.getHgap() + note.getyPosition() * BRICK_NOTE_BG_SIZE);
+            
+            //Percorre a nota horizontalmente(Deve passar pelo loop apenas uma vez);
+            for (int i = 0; i < columns; i++) {
+                //Percorre a nota verticalmente (Para cada coluna);
                 for (int j = 0; j < note.getNoteData()[i].length; j++) {
                     setRectangleData(note.getNoteData()[i][j], rectangles[i][j]);
                 }
@@ -259,20 +316,25 @@ public class GuiRenderController implements Initializable {
         }
     }
 
+    //Método que redesenha o background com os novos valores da board
     public void refreshGameBackground(int[][] board) {
-        for (int i = 2; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                setRectangleData(board[i][j], displayMatrix[i][j]);
-            }
-        }
+//        for (int i = 2; i < board.length; i++) {
+//            for (int j = 0; j < board[i].length; j++) {
+//                setRectangleData(board[i][j], displayMatrix[i][j]);
+//            }
+//        }
+        //Se a nota for tocada corretamente, devemos tirar ela do background.
+        
     }
 
     private void setRectangleData(int color, Rectangle rectangle) {
         rectangle.setFill(getFillColor(color));
-        rectangle.setArcHeight(9);
-        rectangle.setArcWidth(9);
+        rectangle.setArcHeight(10);
+        rectangle.setArcWidth(10);
     }
 
+    //Não vai ser usado no Interpretador.
+    @Deprecated
     private void moveDown(MoveEvent event) {
         if (isPause.getValue() == Boolean.FALSE) {
             DownNote downData = eventListener.onDownEvent(event);
@@ -284,6 +346,11 @@ public class GuiRenderController implements Initializable {
             refreshNote(downData.getViewData());
         }
         musicSheetPanel.requestFocus();
+    }
+    
+    private void playUserNote(MoveEvent event, KeyEvent kEvent){
+        //Se a nota exigida for a nota tocada pelo usuário,
+        //soma mais um no score dele, e realça a nota.
     }
 
     public void setEventListener(InputEventListener eventListener) {
