@@ -95,7 +95,11 @@ public class SimpleSheet implements VerticalMusicSheet {
         Note currentNote = noteGenerator.getNote();
         noteRotator.setNoteBrick(currentNote);
         //currentOffset define o ponto em que a nota aparecerá no VerticalMusicSheet.
-        currentOffset = new Point(8, 0);
+        /*TODO: Esse é o local onde a nova nota vai aparecer: 
+        *AQUI DEVE SER INSERIDO A CASA ONDE A NOTA VAI "POUSAR"
+        *RandomNoteGenerator vai ler o arquivo midi, e determinar qual a casa da nota.
+        */
+        currentOffset = new Point(currentNote.getNoteFret(), 0);
         
         System.out.println("Note fret: " + currentNote.getNoteFret()+ "\n\r");
         // Retorna verdadeiro se a condição for satisfeita:
@@ -107,6 +111,9 @@ public class SimpleSheet implements VerticalMusicSheet {
         return currentGameMatrix;
     }
 
+    /** Método que devolve uma nova ViewData.
+     * 
+     */
     @Override
     public ViewData getViewData() {
         return new ViewData(noteRotator.getCurrentShape(), (int) currentOffset.getX(), (int) currentOffset.getY(), noteGenerator.getNextNote().getShapeMatrix().get(0));

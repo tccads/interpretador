@@ -177,7 +177,7 @@ public class GuiRenderController implements Initializable {
         
         Random gerador = new Random();
         Label noteName = new Label("5");
-        brickNoteHeight = gerador.nextInt(101);
+        brickNoteHeight = gerador.nextInt(40);
         
         //Tamanhos da tela:
         int columnsSize = boardMatrix.length;

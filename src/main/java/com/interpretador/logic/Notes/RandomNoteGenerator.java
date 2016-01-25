@@ -24,6 +24,7 @@ public class RandomNoteGenerator implements NoteGenerator {
 //        brickList.add(new SBrick());
 //        brickList.add(new TBrick());
 //        brickList.add(new ZBrick());
+        //TODO:É AQUI que deve-se inserir todas as notas da música. 
         nextNotes.add(noteList.get(ThreadLocalRandom.current().nextInt(noteList.size())));
         nextNotes.add(noteList.get(ThreadLocalRandom.current().nextInt(noteList.size())));
     }
@@ -40,7 +41,11 @@ public class RandomNoteGenerator implements NoteGenerator {
         }
         note = nextNotes.poll();
         
-        note.setNoteFret(ThreadLocalRandom.current().nextInt());
+        //note.setNoteFret(ThreadLocalRandom.current().nextInt());
+        //FretNote define onde e qual é a casa da nova nota.
+        note.setNoteFret(9);
+        
+        System.out.println("\n\r ##Note fret: "+ note.getNoteFret());
         return note;
     }
 
